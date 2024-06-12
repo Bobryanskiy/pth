@@ -2,7 +2,7 @@ import unittest
 import pytest
 from unittest.mock import patch
 
-from test import print_hello, concatenate_strings, calculate_salary
+from MainFolder.test import print_hello, concatenate_strings, calculate_salary
 
 
 class TestHelloWorld(unittest.TestCase):

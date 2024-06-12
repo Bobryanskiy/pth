@@ -1,0 +1,9 @@
+---
+- module: TestFolder.testing
+  tests:
+    - test_print_hello_world
+    - test_concatenate_strings_success
+    - test_calculate_salary
+#- run: pylint MainFolder.test
+#- run: pylint TestFolder.testing
+#- run: black .
