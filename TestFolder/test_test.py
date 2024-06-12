@@ -1,5 +1,5 @@
-import unittest
 import pytest
+import unittest
 from unittest.mock import patch
 
 from MainFolder.test import print_hello, concatenate_strings, calculate_salary
@@ -14,8 +14,8 @@ class    TestHelloWorld(unittest.TestCase):
             self.assertEqual(actual_output, expected_output)
 
 
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()
 
 
 def test_concatenate_strings_success():
@@ -45,4 +45,4 @@ def test_calculate_salary(total_compensation, result):
 #
 #
 # if __name__ == '__main__':
-#     pytest.main(['testing.py'])
+#     pytest.main(['test_test.py'])
