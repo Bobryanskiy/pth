@@ -3,7 +3,7 @@ name: Tests Check
 on: [pull_request, push]
 
 jobs:
-  check-code-style:
+  check-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
