@@ -2,7 +2,7 @@ import unittest
 import pytest
 from unittest.mock import patch
 
-from test import printHello, concatenate_strings, calculate_salary
+from test import print_hello, concatenate_strings, calculate_salary
 
 
 class TestHelloWorld(unittest.TestCase):
@@ -10,7 +10,7 @@ class TestHelloWorld(unittest.TestCase):
         with patch("random.choice") as mock_choice:
             mock_choice.return_value = "A"
             expected_output = "hello worldA"
-            actual_output = printHello()
+            actual_output = print_hello()
             self.assertEqual(actual_output, expected_output)
 
 
