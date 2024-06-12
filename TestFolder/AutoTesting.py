@@ -17,7 +17,7 @@ def load_tests(loader, standard_tests, pattern):
 
 suite = unittest.TestSuite()
 
-for test_class in   load_tests(unittest.defaultTestLoader, suite, '. * '):
+for   test_class in   load_tests(unittest.defaultTestLoader, suite, '. * '):
     suite.addTests(unittest.defaultTestLoader.loadTestsFromName(test_class))
 
 runner = unittest.TextTestRunner()
