@@ -8,8 +8,8 @@ from test import print_hello, concatenate_strings, calculate_salary
 class TestHelloWorld(unittest.TestCase):
     def test_print_hello_world(self):
         with patch("random.choice") as mock_choice:
-            mock_choice.return_value = "A"
-            expected_output = "hello worldA"
+            mock_choice.return_value = "B"
+            expected_output = "hello worldB"
             actual_output = print_hello()
             self.assertEqual(actual_output, expected_output)
 
