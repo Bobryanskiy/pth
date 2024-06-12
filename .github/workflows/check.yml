@@ -6,15 +6,29 @@ jobs:
   check-code-style:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v2
         with:
-          python-version: 3.9
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+          python-version: 3.x
       - name: Install Black
         run: pip install black
       - name: Check code style with Black
         run: |
           black --check .
+      - name: Report results
+        if: failure()
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const msg = process.env.GITHUB\_REPOSITORY ? `The code style check failed for ${process.env.GITHUB_REPOSITORY} repository.` : `The code style check failed.`;
+            core.setOutput("failMessage", msg);
+            core.setFailed(true);
+      - name: Fail the job if there are any issues
+        if: ${{ failure() }}
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const failMessage = core.getOutput("failMessage");
+            core.error(failMessage);
+            core.setFailed(true);
