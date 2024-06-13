@@ -46,6 +46,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: mainFolder/test.py
+          asset_path: MainFolder/test.py
           asset_name: test
           asset_content_type: application/octet-stream
