@@ -31,15 +31,16 @@ jobs:
         run: |
           python -m compileall .
       - name: Create GitHub Release
-        id: create_release
-        uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
         with:
-          tag_name: ${{ github.run_number }}
-          release_name: ${{ github.run_number }}
-          draft: false
-          prerelease: false
+          tag_name: ${{github.run_number}}
+          release_name: ${{github.run_number}}
+        run: >-
+          gh release create
+          '${{ github.run_number }}'
+          --repo '${{ github.repository }}'
+          --notes ""
       - name: Upload artifact signatures to GitHub Release
         env:
           GITHUB_TOKEN: ${{ github.token }}
