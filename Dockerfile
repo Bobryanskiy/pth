@@ -8,4 +8,4 @@ LABEL authors="cyxov"
 WORKDIR /app
 COPY . /app
 RUN pip install -r requirements.txt
-CMD ["python", "test.py"]
+CMD ["python", "MainFolder/test.py"]
