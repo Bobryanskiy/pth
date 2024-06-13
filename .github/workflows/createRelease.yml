@@ -31,20 +31,21 @@ jobs:
         run: |
           python -m compileall .
       - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{github.run_number}}
-          release_name: ${{github.run_number}}
-        run: >-
-          gh release create
-          '${{ github.run_number }}'
-          --repo '${{ github.repository }}'
-          --notes ""
-      - name: Upload artifact signatures to GitHub Release
+          tag_name: ${{ github.run_number }}
+          release_name: ${{ github.run_number }}
+          draft: false
+          prerelease: false
+      - name: Upload Binary in GitHub release
+        uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ github.token }}
-        run: >-
-          gh release upload
-          '${{ github.ref_name }}' dist/**
-          --repo '${{ github.repository }}'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: main/main.py
+          asset_name: main
+          asset_content_type: application/octet-stream
