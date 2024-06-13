@@ -33,6 +33,9 @@ jobs:
       - name: Create GitHub Release
         env:
           GITHUB_TOKEN: ${{ github.token }}
+        with:
+          tag_name: ${{github.run_number}}
+          release_name: ${{github.run_number}}
         run: >-
           gh release create
           '${{ github.ref_name }}'
